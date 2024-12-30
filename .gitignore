@@ -102,6 +102,9 @@
 hw_handoff
 ipshared
 
+### generated ip
+*/*.gen/
+
 
 ### Python Gitignore
 
