@@ -104,6 +104,7 @@ ipshared
 
 ### generated ip
 */*.gen/
+*/*.sim/
 
 
 ### Python Gitignore
