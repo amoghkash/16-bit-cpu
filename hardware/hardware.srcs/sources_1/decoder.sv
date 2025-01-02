@@ -26,12 +26,9 @@ module decoder(
     output [3:0]regx,
     output [3:0]regy,
     output [3:0]regz,
-    output [2:0]aluop,
-    output isaluop,
     output [11:0]value
     );
-    
+        
     assign {opcode, value} = instr;
-    assign {regx, regy, regz} = value;
-    assign {isaluop, aluop} = opcode;
+    assign {regz, regx, regy} = value;
 endmodule

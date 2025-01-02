@@ -19,7 +19,7 @@
 // 
 //////////////////////////////////////////////////////////////////////////////////
 
-module reg_file_tb;
+module tb_regfile;
 
     // Parameters
     parameter WIDTH = 16;
@@ -29,7 +29,6 @@ module reg_file_tb;
     logic                   clk = 0;
     logic                   rst_n = 0;
     logic                   write_en = 0;
-    logic                   immediate = 0;
     logic [$clog2(DEPTH)-1:0] rd_addr1;
     logic [$clog2(DEPTH)-1:0] rd_addr2;
     logic [$clog2(DEPTH)-1:0] wr_addr;
@@ -45,7 +44,6 @@ module reg_file_tb;
         .clk(clk),
         .rst_n(rst_n),
         .wren(write_en),
-        .imm_en(immediate),
         .x(rd_addr1),
         .y(rd_addr2),
         .z(wr_addr),
@@ -68,12 +66,12 @@ module reg_file_tb;
         wr_data   = 0;
 
         // Apply reset
-        $display("Applying reset...");
+        //$display("Applying reset...");
         #10;
         rst_n = 1;
 
         // Write to register 3
-        $display("Writing to register 3...");
+        //$display("Writing to register 3...");
         write_en = 1;
         wr_addr = 3;
         wr_data = 16'hABCD;
@@ -85,13 +83,13 @@ module reg_file_tb;
         wr_data = 0;
 
         // Read from register 3
-        $display("Reading from register 3...");
+        //$display("Reading from register 3...");
         rd_addr1 = 3;
         #10;
-        $display("Read data1: %h (expected: ABCD)", rd_data1);
+        $display("[REGFILE]|Test 1:%h|expected:abcd", rd_data1);
 
         // Write to register 5
-        $display("Writing to register 5...");
+        //$display("Writing to register 5...");
         write_en = 1;
         wr_addr = 5;
         wr_data = 16'hCAFE;
@@ -101,21 +99,16 @@ module reg_file_tb;
         write_en = 0;
 
         // Simultaneous reads
-        $display("Reading from registers 3 and 5...");
+        //$display("Reading from registers 3 and 5...");
         rd_addr1 = 3;
         rd_addr2 = 5;
         #10;
-        $display("Read data1: %h (expected: ABCD)", rd_data1);
-        $display("Read data2: %h (expected: CAFE)", rd_data2);
-        
-        rd_addr1 = 5;
-        immediate = 1;
-        #10;
-        $display("Test Immediate: %h (expected: ZZZZ)", rd_data2);
+        $display("[REGFILE]|Test 2:%h|expected:abcd", rd_data1);
+        $display("[REGFILE]|Test 3:%h|expected:cafe", rd_data2);
+       
         
         // End simulation
-        $display("Simulation complete!");
-        $finish;
+        //$display("Simulation complete!");
     end
 
 endmodule

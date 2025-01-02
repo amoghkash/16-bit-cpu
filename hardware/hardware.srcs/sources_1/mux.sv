@@ -3,9 +3,9 @@
 // Company: 
 // Engineer: 
 // 
-// Create Date: 12/28/2024 05:49:55 PM
+// Create Date: 12/30/2024 11:42:37 AM
 // Design Name: 
-// Module Name: register
+// Module Name: mux
 // Project Name: 
 // Target Devices: 
 // Tool Versions: 
@@ -20,24 +20,14 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module register # (
-    parameter int SIZE = 16
+module mux2_1 #(
+    parameter SIZE = 16
     )(
-    input [(SIZE-1):0] in,
-    input clk,
-    input reset,
-    input enable,
-    input [(SIZE-1):0] out
+    input [SIZE-1:0]in0,
+    input [SIZE-1:0]in1,
+    input select,
+    output [SIZE-1:0]out
     );
     
-    logic [(SIZE-1):0] value = '0;
-    assign out = value;
-    
-    always@(posedge clk) begin
-        if(reset) 
-            value = '0;
-        else if (enable)
-           value = in;
-    end
-    
+    assign out = select ? in1 : in0;
 endmodule

@@ -22,7 +22,7 @@
 
 module regfile #(
     parameter int WIDTH = 16,
-    parameter int DEPTH = 8
+    parameter int DEPTH = 16
     )(
     input [$clog2(DEPTH)-1:0] x,
     input [$clog2(DEPTH)-1:0] y,
@@ -32,33 +32,26 @@ module regfile #(
     input  [(WIDTH-1):0] z_in,
     input clk,
     input wren,
-    input imm_en,
     input rst_n
     );
     
     logic [WIDTH-1:0] registers [0:DEPTH-1];
-    logic [WIDTH-1:0] y_temp;
     
     assign x_out = registers[x];
-    assign y_out = y_temp;
+    assign y_out = registers[y];
     
-    // TriState Y Bus if immediate_en is high
-    always_comb
-    begin
-        if (imm_en)
-            y_temp = 15'bz;
-        else
-            y_temp = registers[y];
+    always_comb begin
+        if (wren) begin
+            registers[z] = z_in;
+        end
     end
-    
+
     // If wren is enabled, write to REGFILE
     always_ff @(posedge clk or negedge rst_n) begin
         if(rst_n == 'b0) begin
-        for (int i = 0; i < DEPTH; i++) begin
-            registers[i] <= '0;
-        end
-        end else if (wren) begin
-            registers[z] = z_in;
+            for (int i = 0; i < DEPTH; i++) begin
+                registers[i] <= '0;
+            end
         end
     end
         

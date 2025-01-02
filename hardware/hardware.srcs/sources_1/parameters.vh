@@ -1,4 +1,4 @@
-parameter WORD_SIZE = 16;
+`define WORD_SIZE       16
 
 `define ALU_ADD         4'h0
 `define ALU_ADDI        4'h1
@@ -17,3 +17,7 @@ parameter WORD_SIZE = 16;
 `define OP_BNEZ         4'hD
 `define OP_OUT          4'hE
 `define OP_HALT         4'hF
+
+`define JUMP_NOCOND     2'b11
+`define JUMP_BEQZ       2'b00
+`define JUMP_BNEZ       2'b01
