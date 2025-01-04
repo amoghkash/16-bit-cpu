@@ -279,3 +279,5 @@ cython_debug/
 #.idea/
 /hardware/hardware.cache
 /hardware/hardware.runs
+
+.DS_Store
