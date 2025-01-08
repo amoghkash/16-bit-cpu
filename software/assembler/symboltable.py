@@ -42,14 +42,14 @@ def generate() -> tuple[tuple[list[str], list[str]], dict[str, list]]:
         data[1] = data[1].replace(".","")
         
         if (data[1] == "word"):
-            symbolTable[data[0]] = ['prim', hex(currentOffset), 2, data[2]]
+            symbolTable[data[0]] = ['prim', currentOffset, 2, data[2]]
             currentOffset += 2
         elif (data[1] == "array"):
             numElements = len(data) - 2
-            symbolTable[data[0]] = ['prim', hex(currentOffset), 2*numElements, data[2:]]
+            symbolTable[data[0]] = ['prim', currentOffset, 2*numElements, data[2:]]
             currentOffset += 2*numElements
         elif (data[1] == "alloc"):
-            symbolTable[data[0]] = ['prim', hex(currentOffset), int(data[2]), None]
+            symbolTable[data[0]] = ['prim', currentOffset, int(data[2]), None]
             currentOffset += int(data[2])
 
 

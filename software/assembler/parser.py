@@ -10,17 +10,11 @@ def parse():
 
 def parse_args():
     if("-h" in sys.argv):
-        print("Usage: python main.py [INPUTFILE] [-d] [-f <format>] [-s <num_of_addresses>]")
-        print("-d: Debug flag")
-        print("-f: Format type")
-        print("-s: Number of addresses")
+        print_help()
         sys.exit(0)
     
     if(len(sys.argv) < 2):
-        print("Usage: python main.py [INPUTFILE] [-d] [-f <format>] [-s <num_of_addresses>]")
-        print("-d: Debug flag")
-        print("-f: Format type")
-        print("-s: Number of addresses")
+        print_help()
         sys.exit(0)
     
     settings.INPUT_FILE = sys.argv[1]
@@ -75,3 +69,10 @@ def check_file():
     except FileNotFoundError:
         failed("File not found")
         sys.exit(1)
+
+def print_help():
+    print("Usage: python main.py [INPUTFILE] [-d] [-f <format>] [-s <num_of_addresses>]")
+    print("-d: Debug flag")
+    print("-f: Format type")
+    print("-s: Number of addresses")
+    print("-dual: Output Data Binary and Instruction Binary seperately, useful if different physical memories are used")

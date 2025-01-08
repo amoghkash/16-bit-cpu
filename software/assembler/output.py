@@ -30,3 +30,6 @@ def printSettings():
         print(f"Format Type: {settings.FORMAT_TYPE}")
         print(f"Number of Addresses: {settings.NUM_OF_ADDRESSES}")
         print(f"Dual File Output: {settings.DUAL_FILE_OUTPUT}{bcolors.ENDC}")
+
+def statistics(message:str):
+    print(f"{bcolors.BOLD}{bcolors.OKGREEN}{message}{bcolors.ENDC}")

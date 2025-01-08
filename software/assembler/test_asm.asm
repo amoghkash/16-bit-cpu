@@ -1,7 +1,7 @@
 .data
-counter:    .word 314
-teSt:       .array 5 6 7
-space:      .alloc 1044
+counter:    .word 145
+teSt:       .array 5 6 8
+space:      .alloc 5
 
 
 .text
@@ -12,5 +12,8 @@ LabelTest:	addi	r1, r2, 0x6	           # TEST COMMENT
             add r2, r4,r6
             lw r2, r3 # test comment
     halt
-    loadh 0x495
+    loadh test
+    addi r3, r0, -4
+    shift r1, r3
+    lw    r3, r1
 #adfss
