@@ -1,6 +1,6 @@
 # 16 Bit CPU
 
-In this project, created a 16-bit architecture and implmented it into a custom hardware/software solution. There are 2 different parts to this project, the hardware and software. The hardware consists of a Vivado project that implments the hardware onto a [Diligent Spartan-7 FPGA](https://digilent.com/reference/programmable-logic/arty-s7/reference-manual).
+In this project, I created a 16-bit architecture and implmented it into a custom hardware/software solution. There are 2 different parts to this project, the hardware and software. The hardware consists of a Vivado project that implments the hardware onto a [Diligent Spartan-7 FPGA](https://digilent.com/reference/programmable-logic/arty-s7/reference-manual).
 
 ## The Architecture
 

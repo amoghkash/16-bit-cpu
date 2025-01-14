@@ -2,12 +2,14 @@ import settings
 import parser
 import symboltable
 import linker
+import formatter
 
 def main():
     
     parser.parse()
     info, table = symboltable.generate()
-    linker.link(info, table)
+    binary = linker.link(info, table)
+    formatter.format(binary)
 
 
 

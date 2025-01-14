@@ -281,3 +281,4 @@ cython_debug/
 /hardware/hardware.runs
 
 .DS_Store
+*.coe
