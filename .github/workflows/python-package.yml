@@ -28,6 +28,7 @@ jobs:
 
       - name: Determine architecture
         id: arch
+        shell: bash
         run: |
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
             echo "arch=x86_64" >> $GITHUB_ENV
