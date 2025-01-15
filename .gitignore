@@ -284,4 +284,3 @@ cython_debug/
 *.coe
 *.bin
 *.csv
-*.txt
