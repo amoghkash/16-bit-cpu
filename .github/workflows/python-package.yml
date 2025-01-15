@@ -18,6 +18,25 @@ jobs:
             os: [ubuntu-latest, windows-latest, macos-latest]
 
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.11
+
+      - name: Determine architecture
+        id: arch
+        run: |
+          if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
+            echo "arch=x86_64" >> $GITHUB_ENV
+          elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
+            echo "arch=$(uname -m)" >> $GITHUB_ENV
+          else
+            echo "arch=$(uname -m)" >> $GITHUB_ENV
+          fi
+    
       - name: PyInstaller Action
         uses: Martin005/pyinstaller-action@v1.2.0
         with:
