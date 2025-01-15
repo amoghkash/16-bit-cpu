@@ -28,16 +28,17 @@ jobs:
 
       - name: Determine architecture
         id: arch
-        shell: bash
         run: |
           if [[ "${{ matrix.os }}" == "windows-latest" ]]; then
-            echo "arch=x86_64" >> $GITHUB_ENV
+            echo "arch=x64_windows" >> $GITHUB_ENV
           elif [[ "${{ matrix.os }}" == "macos-latest" ]]; then
-            echo "arch=$(uname -m)" >> $GITHUB_ENV
+            echo "arch=$(uname -m)_macos" >> $GITHUB_ENV
+          elif [[ "${{ matrix.os }}" == "ubuntu-latest" ]]; then
+            echo "arch=x86_64_ubuntu" >> $GITHUB_ENV
           else
             echo "arch=$(uname -m)" >> $GITHUB_ENV
           fi
-    
+          
       - name: PyInstaller Action
         uses: Martin005/pyinstaller-action@v1.2.0
         with:
